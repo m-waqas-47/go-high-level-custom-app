@@ -23,6 +23,11 @@ app.get("/refresh", require("./lib/refresh"));
 
 app.get("/oauth/callback", require("./lib/callback"));
 
+app.use("/", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.send("Server Running");
+});
+
 app.post("/webhook", async (req, res) => {
   console.log(req.body, "webhook catch response");
 });
